@@ -9,7 +9,7 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width / 100;
     double screenHeight = MediaQuery.of(context).size.height / 100;
-    print('generating cart page');
+
     var cart = context.watch<CartModel>();
     return Scaffold(
       body: Stack(children: [
@@ -56,11 +56,10 @@ class CartPage extends StatelessWidget {
                                 'Candle Scent: ${cart.rawFinalProductList[index].productName}\n'
                                 'Size: ${cart.rawFinalProductList[index].productSize}\n'
                                 'Quantity: ${cart.rawFinalProductList[index].productQuantity}\n'
-                                'Price: ${cart.rawFinalProductList[index].productPrice}\n'
-                                'DebugID: ${cart.rawFinalProductList[index].productId}',
+                                'Price: ${cart.rawFinalProductList[index].productPrice}\n',
                                 style: TextStyle(fontSize: screenWidth * 1.3),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10.0,
                               ),
                               MaterialButton(
@@ -102,8 +101,8 @@ class CartPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Total Price: \$${Provider.of<CartModel>(context).totalPrice}',
-                  style: TextStyle(color: Colors.white),
+                  'Total Price: Rs.${Provider.of<CartModel>(context).totalPrice}',
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
               Padding(
