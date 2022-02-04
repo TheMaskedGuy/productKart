@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:glowing_love_candles/home_page.dart';
 import 'package:glowing_love_candles/models/cart.dart';
 import 'package:glowing_love_candles/models/product_cart_version.dart';
 import 'package:glowing_love_candles/models/product_info.dart';
-import 'package:glowing_love_candles/widgets/product_card_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../cart_page.dart';
@@ -45,7 +44,7 @@ class _ProductPageState extends State<ProductPage> {
         body: WillPopScope(
           onWillPop: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+                context, MaterialPageRoute(builder: (context) => const HomePage()));
             throw 'error';
           },
           child: ListView(
@@ -63,7 +62,7 @@ class _ProductPageState extends State<ProductPage> {
                       splashRadius: 0.1,
                       highlightColor: Colors.pink,
 
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.shopping_cart_rounded,
                         color: Colors.white,
                       ),
@@ -71,7 +70,7 @@ class _ProductPageState extends State<ProductPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CartPage()));
+                                builder: (context) => const CartPage()));
                       },
                     ),
                   ),
@@ -119,7 +118,7 @@ class _ProductPageState extends State<ProductPage> {
                                   letterSpacing: 2.0,
                                   fontSize: userWidth * 1.8),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20.0,
                             ),
                             Row(
@@ -130,7 +129,7 @@ class _ProductPageState extends State<ProductPage> {
                                       overflow: TextOverflow.ellipsis,
                                       fontSize: userWidth * 1.3),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5.0,
                                 ),
                                 DropdownButton<String>(
@@ -161,7 +160,7 @@ class _ProductPageState extends State<ProductPage> {
                                     });
                                   },
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5.0,
                                 ),
                                 Text(
@@ -180,7 +179,7 @@ class _ProductPageState extends State<ProductPage> {
                                       overflow: TextOverflow.ellipsis,
                                       fontSize: userWidth * 1.3),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5.0,
                                 ),
                                 DropdownButton<int>(
@@ -265,7 +264,7 @@ class _ProductPageState extends State<ProductPage> {
                                 cart.add(productCart);
                                 Provider.of<CartModel>(context, listen: false)
                                     .add(productCart);
-                                print(cart.rawFinalProductList.length);
+                                // print(cart.rawFinalProductList.length);
 
                                 const snackBar = SnackBar(
                                   content: Text('Item added to Cart!'),

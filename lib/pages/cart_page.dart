@@ -41,7 +41,7 @@ class CartPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Image.asset(
-                            'candle-1.jpg',
+                            'candle-${cart.rawFinalProductList[index].productId + 1}.jpg',
                             height: screenWidth * 20,
                             width: screenWidth * 20,
                           ),
@@ -108,7 +108,12 @@ class CartPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      const snackBar = SnackBar(
+                        content: Text('Checking you out... (to implement!)'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
                     child: const Text(
                       'CheckOut',
                       style: TextStyle(

@@ -16,9 +16,9 @@ class _HomePageState extends State<HomePage> {
         body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             if (constraints.maxWidth > 650) {
-              return DesktopView();
+              return const DesktopView();
             } else {
-              return MobileView();
+              return mobileView();
             }
           },
         ),
@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget MobileView() {
+Widget mobileView() {
   return Container(
     color: Colors.red,
   );

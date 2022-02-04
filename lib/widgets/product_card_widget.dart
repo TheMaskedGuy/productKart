@@ -13,8 +13,8 @@ class ProductCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
           left: screenWidth * 3.5,
-          right: 0,
-          bottom: screenWidth * 3,
+          right: screenWidth * 3.5,
+          bottom: screenWidth * 0,
           top: screenWidth * 3),
       child: GestureDetector(
         onTap: () {
@@ -37,14 +37,14 @@ class ProductCard extends StatelessWidget {
                 height: screenWidth * 20,
                 width: screenWidth * 20,
               ),
-              Text('${ProductInfo.myProducts[productID].productName}'),
-              const SizedBox(
-                height: 10.0,
+              SizedBox(
+                height: screenWidth * 1,
+              ),
+              Text(ProductInfo.myProducts[productID].productName),
+              SizedBox(
+                height: screenWidth * 1,
               ),
               Text('Rs.${ProductInfo.myProducts[productID].productPrice}'),
-              const SizedBox(
-                height: 30.0,
-              )
             ],
           ),
         ),

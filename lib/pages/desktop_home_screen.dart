@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:glowing_love_candles/pages/cart_page.dart';
-import 'package:glowing_love_candles/models/product.dart';
 import 'package:glowing_love_candles/models/product_info.dart';
+import 'package:glowing_love_candles/shop_page.dart';
 
 import 'package:glowing_love_candles/widgets/product_card_widget.dart';
 import 'homepage_components/homepage_welcome_component.dart';
-import 'dart:ui' as ui;
 
 class DesktopView extends StatefulWidget {
   const DesktopView({Key? key}) : super(key: key);
@@ -34,12 +33,11 @@ class _DesktopViewState extends State<DesktopView>
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width / 100;
     List<Widget> products = [];
-    int sum = 0;
+
     for (var product in ProductInfo.myProducts) {
       products.add(
-        ProductCard(productID: sum),
+        ProductCard(productID: product.productId),
       );
-      sum++;
     }
 
     return SafeArea(
@@ -77,72 +75,28 @@ class _DesktopViewState extends State<DesktopView>
                         controller: _scrollController,
                         children: [
                           const HomeScreenWelcomeComponent(),
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  products[0],
-                                  products[2],
-                                  products[3],
-                                  products[4],
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  products[5],
-                                  products[6],
-                                  products[7],
-                                  products[8]
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  products[9],
-                                ],
-                              ),
-                            ],
+                          GridView.builder(
+                            itemCount: products.length,
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.all(5),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3),
+                            itemBuilder: (BuildContext context, int index) {
+                              return products[index];
+                            },
                           ),
                         ],
                       ),
                     ),
                     //--------------------SHOP PAGE----------------
-                    ListView(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 30.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  products[0],
-                                  products[2],
-                                  products[3],
-                                  products[4],
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  products[5],
-                                  products[6],
-                                  products[7],
-                                  products[8]
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  products[9],
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                    const ShopPage(),
                     //-----------------ABOUT PAGE-------------------------
                     Container(
                       color: Colors.white,
                       child: const Center(
-                        child: Text('ToDo: implement About Page!'),
+                        child:
+                            Text('...Further Information about the Company...'),
                       ),
                     ),
                   ],
@@ -172,7 +126,7 @@ class _DesktopViewState extends State<DesktopView>
                           }
                           setState(() {});
                         },
-                        labelStyle: TextStyle(
+                        labelStyle: const TextStyle(
                             fontWeight: FontWeight.bold, letterSpacing: 1.0),
                         tabs: const [
                           Tab(
@@ -198,12 +152,12 @@ class _DesktopViewState extends State<DesktopView>
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
                           child: IconButton(
-                            icon: Icon(Icons.shopping_cart_rounded),
+                            icon: const Icon(Icons.shopping_cart_rounded),
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CartPage()));
+                                      builder: (context) => const CartPage()));
                             },
                           ),
                         ),
@@ -534,7 +488,7 @@ class RPSCustomPainter extends CustomPainter {
     Paint paint_6_stroke = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = size.width * 0.01000000;
-    paint_6_stroke.color = Color(0xffFFF9F9).withOpacity(1);
+    paint_6_stroke.color = const Color(0xffFFF9F9).withOpacity(1);
     canvas.drawPath(path_6, paint_6_stroke);
   }
 

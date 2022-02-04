@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class HomeScreenWelcomeComponent extends StatelessWidget {
   const HomeScreenWelcomeComponent({Key? key}) : super(key: key);
